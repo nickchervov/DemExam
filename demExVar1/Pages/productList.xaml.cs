@@ -29,6 +29,10 @@ namespace demExVar1.Pages
             btnOrderList.Visibility = Visibility.Collapsed;
 
         }
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            lvProduct.ItemsSource = products.Where(x => x.ProductName.Contains(tbSearch.Text) || x.ProductManufacturer.Contains(tbSearch.Text)).ToList();
+        }
 
         public void updateList()
         {
@@ -54,7 +58,7 @@ namespace demExVar1.Pages
 
             PageHelper.orderSum += selected.ProductCost;
 
-            PageHelper.orderDiscount += Convert.ToDouble(selected.ProductCost) * Convert.ToDouble(selected.ProductDiscount) / 100;
+            PageHelper.orderDiscount += Convert.ToDouble(selected.ProductCost) * Convert.ToDouble(selected.ProductDiscount) / 100;           
            
             btnOrderList.Visibility = Visibility.Visible;
         }

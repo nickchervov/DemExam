@@ -59,13 +59,21 @@ namespace demExVar1.Pages
 
                 ord.OrderDate = DateTime.Today;
 
-                try { ord.PickupPointID = (cbPickUpPoint.SelectedItem as PickupPoint).PickupPointID; } catch {MessageBox.Show("Необходимо выбрать пункт выдачи","Ошибка!"); return; }
+                try 
+                { 
+                    ord.PickupPointID = (cbPickUpPoint.SelectedItem as PickupPoint).PickupPointID;                
+                }                
+                catch
+                {
+                    MessageBox.Show("Необходимо выбрать пункт выдачи","Ошибка!"); 
+                    return; 
+                }
 
                 ord.OrderCode = Convert.ToInt16(rndm.Next(1, 9999));
 
                 ord.UserID = PageHelper.UserId;
 
-                ord.OrderStatus = "В обработке";
+                ord.OrderStatus = "Новый";
 
                 PageHelper.connectDb.Order.Add(ord);
 
@@ -74,7 +82,7 @@ namespace demExVar1.Pages
 
                 var orderIdList = PageHelper.connectDb.Order.Select(c => c.OrderID).AsEnumerable();
 
-                //MessageBox.Show(Convert.ToString(orderIdList.Last())); Для прослеживания последнего id в таблице
+                //MessageBox.Show(Convert.ToString(orderIdList.Last())); Для прослеживания последнего id в таблице Order
 
                 foreach (var prd in PageHelper.Order)
                 {
@@ -92,6 +100,36 @@ namespace demExVar1.Pages
                 PageHelper.connectDb.SaveChanges();
 
                 MessageBox.Show("Заказ успешно добавлен!", "ОК");
+
+                //var takeCode = rndm.Next(1, 999);                                                                                               // начало кода создания талона
+
+                //List<string> lines = new List<string>();
+
+                //lines.Add(takeCode.ToString());
+
+                //lines.Add(ord.OrderDate.ToString());
+
+                //lines.Add("Стоимость заказа: " + PageHelper.orderSum.ToString() + " рублей");
+
+                //lines.Add("Скидка: " + PageHelper.orderDiscount.ToString() + " рублей");
+
+                //lines.Add(ord.PickupPoint.PickupPointAdress);
+
+
+                //foreach (var prd in PageHelper.Order)
+                //{
+                //    var productName = PageHelper.connectDb.Product.Where(x => x.ProductID == prd.Key).Select(c => c.ProductName).ToList();
+
+                //    lines.Add(productName[0]);
+                //}
+
+                //string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                //using (StreamWriter outputFile = new StreamWriter(System.IO.Path.Combine(docPath, "Талон.txt")))
+                //{
+                //    foreach (string line in lines)
+                //        outputFile.WriteLine(line);
+                //}                                                                                                                              // конец кода создания талона
 
                 PageHelper.MainFrame.Navigate(new productList());
             }
@@ -129,7 +167,8 @@ namespace demExVar1.Pages
                     tbDiscount.Text = Convert.ToString(PageHelper.orderDiscount);
 
                     DataContext = new orderViewModel();
-                } else
+                } 
+                else
                 {
                     int selectedValue;
 
@@ -157,6 +196,12 @@ namespace demExVar1.Pages
             {
                 MessageBox.Show($"Для удаления товара из заказа\n" + "необходимо выбрать нужный товар", "Ошибка!");
             }
+        }
+
+        private void btnCreatePDF_Click(object sender, RoutedEventArgs e)
+        {             
+
+            
         }
     }
 }

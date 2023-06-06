@@ -17,7 +17,7 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Поиск: "/>
-            <TextBox x:Name="tbSearch"/>
+            <TextBox x:Name="tbSearch" TextChanged="tbSearch_TextChanged"/>
         </StackPanel>
 
 
@@ -50,8 +50,8 @@
             </ListView.ItemTemplate>
 
             <ListView.ContextMenu>
-                <ContextMenu>
-                    <Button x:Name="btnAddToOrder" Content="Добавить к заказу" Click="btnAddToOrder_Click" BorderThickness="0" MaxWidth="200"/>
+                <ContextMenu Name="cmProduct">
+                    <MenuItem x:Name="btnAddToOrder" Header="Добавить к заказу" Click="btnAddToOrder_Click"/>
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
