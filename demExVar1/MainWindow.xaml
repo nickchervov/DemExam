@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:demExVar1"
         mc:Ignorable="d"
-        Title="ООО 'Книжный мир'" MinHeight="720" MinWidth="1280">
+        Title="ООО 'Книжный клуб'" MinHeight="720" MinWidth="1280">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>

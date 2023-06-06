@@ -18,9 +18,9 @@
             <PasswordBox x:Name="pbPassword"/>
         </DockPanel>
         <StackPanel  HorizontalAlignment="Center">
-            <Button x:Name="btnLogIn" Content="Войти" Margin="0,0,0,10" Click="btnLogIn_Click"/>
-            <Button x:Name="btnLogInGuest" Content="Гость" Click="btnLogInGuest_Click"/>
+            <Button x:Name="btnLogIn" Content="Войти" Click="btnLogIn_Click"/>
+            <TextBlock Text="или" HorizontalAlignment="Center" Margin="5"/>
+            <Button x:Name="btnLogInGuest" Content="Войти как гость" MinWidth="140" Click="btnLogInGuest_Click"/>
         </StackPanel>
-        
     </StackPanel>
 </Page>

@@ -32,28 +32,20 @@ namespace demExVar1.Pages
     /// </summary>
     public partial class orderList : Page
     {
-        Dictionary<int, int> _order;
 
-        double /*_sum,*/ _discount;
-
-        public orderList(Dictionary<int, int> order, /*double sum,*/ double discount)
+        public orderList()
         {
             InitializeComponent();
-
-            _order = order;
-
-            //_sum = sum;
-
-            _discount = discount;
 
             PageHelper.PageName.Text = "Заказ";
 
             cbPickUpPoint.ItemsSource = PageHelper.connectDb.PickupPoint.ToList();
 
             tbSum.Text = Convert.ToString(PageHelper.orderSum);
-            tbDiscount.Text = Convert.ToString(_discount);
 
-            DataContext = new ApplicationViewModel(_order, PageHelper.orderSum, _discount);
+            tbDiscount.Text = Convert.ToString(PageHelper.orderDiscount);
+
+            DataContext = new orderViewModel();
 
         }
 
@@ -76,24 +68,31 @@ namespace demExVar1.Pages
                 ord.OrderStatus = "В обработке";
 
                 PageHelper.connectDb.Order.Add(ord);
+
                 PageHelper.connectDb.SaveChanges();
 
 
                 var orderIdList = PageHelper.connectDb.Order.Select(c => c.OrderID).AsEnumerable();
 
-                MessageBox.Show(Convert.ToString(orderIdList.Last()));
+                //MessageBox.Show(Convert.ToString(orderIdList.Last())); Для прослеживания последнего id в таблице
 
-                foreach (var prd in _order)
+                foreach (var prd in PageHelper.Order)
                 {
                     OrderProduct ordPrd = new OrderProduct();
+
                     ordPrd.OrderID = orderIdList.Last();
+
                     ordPrd.ProductID = prd.Key;
+
                     ordPrd.ProductAmount = prd.Value;
+
                     PageHelper.connectDb.OrderProduct.Add(ordPrd);                  
                 }
 
                 PageHelper.connectDb.SaveChanges();
+
                 MessageBox.Show("Заказ успешно добавлен!", "ОК");
+
                 PageHelper.MainFrame.Navigate(new productList());
             }
             catch
@@ -107,6 +106,7 @@ namespace demExVar1.Pages
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             PageHelper.MainFrame.GoBack();
+
             PageHelper.PageName.Text = "Список товаров" ;
         }
 
@@ -118,40 +118,42 @@ namespace demExVar1.Pages
             {
                 if (selected.Count == 1)
                 {
-                    _order.Remove(selected.Id);
+                    PageHelper.Order.Remove(selected.Id);
 
                     PageHelper.orderSum -= selected.Price;
 
-                    _discount -= selected.Discount;
+                    PageHelper.orderDiscount -= selected.Discount;
 
                     tbSum.Text = Convert.ToString(PageHelper.orderSum);
-                    tbDiscount.Text = Convert.ToString(_discount);
 
-                    DataContext = new ApplicationViewModel(_order, PageHelper.orderSum, _discount);
+                    tbDiscount.Text = Convert.ToString(PageHelper.orderDiscount);
+
+                    DataContext = new orderViewModel();
                 } else
                 {
                     int selectedValue;
 
-                    _order.TryGetValue(selected.Id,out selectedValue);
+                    PageHelper.Order.TryGetValue(selected.Id,out selectedValue);
 
-                    _order[selected.Id] = selectedValue - 1;
+                    PageHelper.Order[selected.Id] = selectedValue - 1;
 
                     PageHelper.orderSum -= selected.Price;
 
-                    _discount -= selected.Discount;
+                    PageHelper.orderDiscount -= selected.Discount;
 
                     tbSum.Text = Convert.ToString(PageHelper.orderSum);
-                    tbDiscount.Text = Convert.ToString(_discount);
 
-                    DataContext = new ApplicationViewModel(_order, PageHelper.orderSum, _discount);
+                    tbDiscount.Text = Convert.ToString(PageHelper.orderDiscount);
+
+                    DataContext = new orderViewModel();
                 }
-             
-
-                if (_order.Count == 0)
+  
+                if (PageHelper.Order.Count == 0)
                 {
                     PageHelper.MainFrame.Navigate(new productList());
                 }
-            } else
+            } 
+            else
             {
                 MessageBox.Show($"Для удаления товара из заказа\n" + "необходимо выбрать нужный товар", "Ошибка!");
             }

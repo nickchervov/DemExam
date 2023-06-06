@@ -20,7 +20,9 @@ namespace demExVar1.Helpers
 
         public static double orderSum;
 
-        public static Dictionary<int, int> Order;
+        public static double orderDiscount;
+
+        public static Dictionary<int, int> Order = new Dictionary<int, int>();
 
         public static bookShopDbEntities connectDb = new bookShopDbEntities();
     }

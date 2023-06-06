@@ -12,31 +12,34 @@ using System.Windows.Controls;
 
 namespace demExVar1.Pages
 {
-    public class ApplicationViewModel
+    public class orderViewModel
     {
-
-        Dictionary<int, int> _order;
 
         public ObservableCollection<orderProduct> ordPrd { get; } = new ObservableCollection<orderProduct>();
 
-        public ApplicationViewModel(Dictionary<int, int> order, double sum, double discount)
+        public orderViewModel()
         {
 
-            _order = order;
+            var keysIDArray = PageHelper.Order.Keys.ToArray();
 
-            var keysIDArray = _order.Keys.ToArray();
-            var valuesAmountArray = _order.Values.ToArray();
+            var valuesAmountArray = PageHelper.Order.Values.ToArray();
 
             var table = PageHelper.connectDb.Product.Where(x => keysIDArray.Contains(x.ProductID)).ToList();
 
             for (int i = 0; i < table.Count; i++)
             {   
                 int productIdValue = table[i].ProductID;
+
                 int productCostValue = table[i].ProductCost;
+
                 double productDiscountValue = (double)table[i].ProductDiscount;
+
                 string productNameValue = table[i].ProductName;
+
                 string productDescrValue = table[i].ProductDescription;
-                string productManufValue = table[i].ProductManufacturer;               
+
+                string productManufValue = table[i].ProductManufacturer;  
+                
                 string productPhotoUrlValue = table[i].ProductPhoto;
 
                 string[] subItems = new string[]

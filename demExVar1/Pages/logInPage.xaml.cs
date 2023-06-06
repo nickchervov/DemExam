@@ -26,7 +26,7 @@ namespace demExVar1.Pages
         {
             InitializeComponent();
 
-            PageHelper.PageName.Text = "ООО 'Книжный мир'";
+            PageHelper.PageName.Text = "ООО 'Книжный клуб'";
 
         }
 
@@ -36,20 +36,24 @@ namespace demExVar1.Pages
             {
                 var result = PageHelper.connectDb.User.Select(c => new { c.UserID , c.UserLogin }).Where(x => x.UserLogin == tbLogin.Text).ToDictionary( t => t.UserID, t => t.UserLogin);
 
-                MessageBox.Show(Convert.ToString(result.Keys.Last()));
+                //MessageBox.Show(Convert.ToString(result.Keys.Last())); Для проверки правильное ли значение получила переменная
 
                 PageHelper.UserId = result.Keys.Last();
+
                 PageHelper.roleId = 1;  //менеджер
+
                 PageHelper.MainFrame.Navigate(new productList());
             }
             else if (PageHelper.connectDb.User.Where(x => x.UserLogin == tbLogin.Text && x.UserPassword == pbPassword.Password && x.UserRole == 2).FirstOrDefault() != null)
             {
                 var result = PageHelper.connectDb.User.Select(c => new { c.UserID, c.UserLogin }).Where(x => x.UserLogin == tbLogin.Text).ToDictionary(t => t.UserID, t => t.UserLogin);
 
-                MessageBox.Show(Convert.ToString(result.Keys.Last()));
+                //MessageBox.Show(Convert.ToString(result.Keys.Last())); Для проверки правильное ли значение получила переменная
 
                 PageHelper.UserId = result.Keys.Last();
+
                 PageHelper.roleId = 2;  //администратор
+
                 PageHelper.MainFrame.Navigate(new productList());
             }
             else 
@@ -61,7 +65,9 @@ namespace demExVar1.Pages
         private void btnLogInGuest_Click(object sender, RoutedEventArgs e)
         {
             PageHelper.UserId = 3; //гость
+
             PageHelper.roleId = 3;
+
             PageHelper.MainFrame.Navigate(new productList());
         }
 

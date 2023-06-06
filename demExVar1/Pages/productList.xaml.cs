@@ -18,10 +18,6 @@ namespace demExVar1.Pages
     {
         DbSet<Product> products;
 
-        Dictionary<int, int> order = new Dictionary<int, int>();
-
-        double /*sum = 0,*/ discount = 0;
-
         public productList()
         {
             InitializeComponent();
@@ -47,18 +43,18 @@ namespace demExVar1.Pages
 
             int productId = selected.ProductID;
 
-            if (order.ContainsKey(productId))
+            if (PageHelper.Order.ContainsKey(productId))
             {
-                order[productId]++;
+                PageHelper.Order[productId]++;
             }               
             else
             {
-                order.Add(productId, 1);
+                PageHelper.Order.Add(productId, 1);
             }
 
             PageHelper.orderSum += selected.ProductCost;
 
-            discount += Convert.ToDouble(selected.ProductCost) * Convert.ToDouble(selected.ProductDiscount) / 100;
+            PageHelper.orderDiscount += Convert.ToDouble(selected.ProductCost) * Convert.ToDouble(selected.ProductDiscount) / 100;
            
             btnOrderList.Visibility = Visibility.Visible;
         }
@@ -70,7 +66,7 @@ namespace demExVar1.Pages
 
         public void btnOrderList_Click(object sender, RoutedEventArgs e)
         {
-            PageHelper.MainFrame.Navigate(new orderList(order, /*sum,*/ discount));         
+            PageHelper.MainFrame.Navigate(new orderList());         
         }       
     }
 }
