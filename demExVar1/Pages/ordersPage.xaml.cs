@@ -43,8 +43,7 @@ namespace demExVar1.Pages
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            PageHelper.MainFrame.GoBack();
-            PageHelper.PageName.Text = "Список товаров";
+            PageHelper.MainFrame.Navigate(new productList());
         }
 
         private void btnChange_Click(object sender, RoutedEventArgs e)

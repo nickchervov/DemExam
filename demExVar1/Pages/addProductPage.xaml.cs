@@ -25,6 +25,8 @@ namespace demExVar1.Pages
         public addProductPage()
         {
             InitializeComponent();
+
+            PageHelper.PageName.Text = "Добавление нового товара";
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

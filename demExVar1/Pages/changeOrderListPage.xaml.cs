@@ -28,6 +28,8 @@ namespace demExVar1.Pages
         {
             InitializeComponent();
 
+            PageHelper.PageName.Text = "Изменение заказа";
+
             _ord = order;
 
             DataContext = _ord;
