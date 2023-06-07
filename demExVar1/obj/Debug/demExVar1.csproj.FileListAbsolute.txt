@@ -28,3 +28,11 @@ E:\Проекты\VisualStudioProjects\demExVar1\demExVar1\obj\Debug\Pages\produ
 E:\Проекты\VisualStudioProjects\demExVar1\demExVar1\obj\Debug\Pages\productList.baml
 E:\Проекты\VisualStudioProjects\demExVar1\demExVar1\obj\Debug\Pages\orderList.g.cs
 E:\Проекты\VisualStudioProjects\demExVar1\demExVar1\obj\Debug\Pages\orderList.baml
+E:\Проекты\VisualStudioProjects\demExVar1\demExVar1\obj\Debug\Pages\addProductPage.g.cs
+E:\Проекты\VisualStudioProjects\demExVar1\demExVar1\obj\Debug\Pages\changeProductPage.g.cs
+E:\Проекты\VisualStudioProjects\demExVar1\demExVar1\obj\Debug\Pages\ordersPage.g.cs
+E:\Проекты\VisualStudioProjects\demExVar1\demExVar1\obj\Debug\Pages\addProductPage.baml
+E:\Проекты\VisualStudioProjects\demExVar1\demExVar1\obj\Debug\Pages\changeProductPage.baml
+E:\Проекты\VisualStudioProjects\demExVar1\demExVar1\obj\Debug\Pages\ordersPage.baml
+E:\Проекты\VisualStudioProjects\demExVar1\demExVar1\obj\Debug\Pages\changeOrderListPage.g.cs
+E:\Проекты\VisualStudioProjects\demExVar1\demExVar1\obj\Debug\Pages\changeOrderListPage.baml

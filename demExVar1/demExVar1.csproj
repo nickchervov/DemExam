@@ -105,6 +105,18 @@
     <Compile Include="DbModel\User.cs">
       <DependentUpon>bookShopDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\addProductPage.xaml.cs">
+      <DependentUpon>addProductPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\changeOrderListPage.xaml.cs">
+      <DependentUpon>changeOrderListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\changeProductPage.xaml.cs">
+      <DependentUpon>changeProductPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ordersPage.xaml.cs">
+      <DependentUpon>ordersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\orderViewModel.cs" />
     <Compile Include="Pages\orderProduct.cs" />
     <Compile Include="Helpers\PageHelper.cs" />
@@ -112,11 +124,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\addProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\changeOrderListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\changeProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\logInPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\orderList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ordersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

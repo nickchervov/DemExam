@@ -1,0 +1,60 @@
+﻿<Page x:Class="demExVar1.Pages.changeOrderListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:demExVar1.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="changeOrderListPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.15*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Код заказа: " HorizontalAlignment="Right" Margin="0,0,0,10"/>
+                <TextBox x:Name="tbCode" Text="{Binding OrderCode}" Grid.Column="1" Grid.Row="0" MinWidth="250" Margin="0,0,0,10"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Дата заказа: " HorizontalAlignment="Right" Margin="0,0,0,10"/>
+                <DatePicker x:Name="dpDate" Text="{Binding OrderDate, StringFormat=dd.MM.yyyy}" Grid.Column="1" Grid.Row="1" MinWidth="300" SelectedDateFormat="Short" Margin="0,0,0,10"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Пункт выдачи: " HorizontalAlignment="Right" Margin="0,0,0,10"/>
+                <ComboBox x:Name="cbPickupPoint"
+                          Grid.Column="1"
+                          Grid.Row="2"
+                          MaxHeight="25"
+                          Margin="0,0,0,10"
+                          DisplayMemberPath="PickupPointAdress"
+                          SelectedValuePath="PickupPointID"
+                          SelectedValue="{Binding PickupPoint.PickupPointID, Mode=OneTime}"
+                          IsReadOnly="True"
+                          IsEditable="False"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Статус заказа: " HorizontalAlignment="Right" Margin="0,0,0,10"/>
+                <TextBox x:Name="tbStatus" Text="{Binding OrderStatus}" Grid.Column="1" Grid.Row="3" MinWidth="250" Margin="0,0,0,10"/>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="btnBack" Content="Назад" Click="btnBack_Click" Margin="0,0,10,0"/>
+            <Button x:Name="btnSave" Content="Сохранить" Click="btnSave_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Page>

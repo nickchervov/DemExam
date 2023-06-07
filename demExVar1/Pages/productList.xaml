@@ -58,6 +58,10 @@
         
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="btnLogOut" Content="Выйти" Click="btnLogOut_Click" Margin="0,0,10,0"/>
+            <Button x:Name="btnDeleteProd" Content="Удалить" Margin="0,0,10,0" Click="btnDeleteProd_Click"/>
+            <Button x:Name="btnAddProduct" Content="Добавить"  Margin="0,0,10,0" Click="btnAddProduct_Click"/>
+            <Button x:Name="btnChangeProduct" Content="Изменить"  Margin="0,0,10,0" Click="btnChangeProduct_Click"/>
+            <Button x:Name="btnOrders" Content="Заказы" Margin="0,0,10,0" Click="btnOrdersList_Click"/>
             <Button x:Name="btnOrderList" Content="Заказ" Click="btnOrderList_Click"/>
         </StackPanel>
     </Grid>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Проекты\VisualStudioProjects\demExVar1\demExVar1\App.xaml
-41187114886
+81569877134
 2-846672559
-211341554911
+251076667367
 18-503556767
-MainWindow.xaml;Pages\logInPage.xaml;Pages\orderList.xaml;Pages\productList.xaml;
+MainWindow.xaml;Pages\addProductPage.xaml;Pages\changeOrderListPage.xaml;Pages\changeProductPage.xaml;Pages\logInPage.xaml;Pages\orderList.xaml;Pages\ordersPage.xaml;Pages\productList.xaml;
 
 True
 

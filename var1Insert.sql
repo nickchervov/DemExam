@@ -7,6 +7,8 @@ INSERT INTO "Role" Values('Клиент');
 
 INSERT INTO "User" Values('Никита','Червов','Евгеньевич','adm','123',2);
 INSERT INTO "User" Values('Полина','Иванова','Романовна','man','123',1);
+INSERT INTO "User" Values('-','Гость','-','-','-',3);
+INSERT INTO "User" Values('Кирилл','Пупков','Кириллович','pol','123',4);
 
 INSERT INTO PickupPoint VALUES('г.Орехово-Зуево ул.Урицкого д.63');
 INSERT INTO PickupPoint VALUES('г.Орехово-Зуево ул.Володарского д.15');

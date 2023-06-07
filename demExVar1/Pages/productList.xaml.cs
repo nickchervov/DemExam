@@ -28,6 +28,28 @@ namespace demExVar1.Pages
 
             btnOrderList.Visibility = Visibility.Collapsed;
 
+            if (PageHelper.roleId == 2)
+            {
+                btnDeleteProd.Visibility = Visibility.Visible;
+                btnAddProduct.Visibility = Visibility.Visible;
+                btnChangeProduct.Visibility = Visibility.Visible;
+                btnOrders.Visibility = Visibility.Visible;
+            }
+            else if (PageHelper.roleId == 1)
+            {
+                btnDeleteProd.Visibility = Visibility.Collapsed;
+                btnAddProduct.Visibility = Visibility.Collapsed;
+                btnChangeProduct.Visibility = Visibility.Collapsed;
+                btnOrders.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnDeleteProd.Visibility = Visibility.Collapsed;
+                btnAddProduct.Visibility = Visibility.Collapsed;
+                btnChangeProduct.Visibility = Visibility.Collapsed;
+                btnOrders.Visibility = Visibility.Collapsed;
+            }
+
         }
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -71,6 +93,68 @@ namespace demExVar1.Pages
         public void btnOrderList_Click(object sender, RoutedEventArgs e)
         {
             PageHelper.MainFrame.Navigate(new orderList());         
-        }       
+        }
+
+        private void btnDeleteProd_Click(object sender, RoutedEventArgs e)
+        {
+            var selected = lvProduct.SelectedItem as Product;
+
+            if (selected != null)
+            {
+                if (MessageBoxResult.Yes == MessageBox.Show("Вы точно хотите удалить выбранную запись?","Предупреждение!", MessageBoxButton.YesNo))
+                {
+                    try
+                    {
+                        PageHelper.connectDb.Product.Remove(selected);
+
+                        PageHelper.connectDb.SaveChanges();
+
+                        updateList();
+                    } 
+                    catch 
+                    {
+                        MessageBox.Show("Не удалось удалить запись, имеется связанная запись", "Ошибка!");
+                    }                   
+                }
+            }
+            else
+            {
+                MessageBox.Show("Для удаления необходимо выбрать запись!", "Ошибка!");
+            }
+        }
+
+        private void btnAddProduct_Click(object sender, RoutedEventArgs e)
+        {
+            PageHelper.MainFrame.Navigate(new addProductPage());
+        }
+
+        private void btnChangeProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var selected = lvProduct.SelectedItem as Product;
+
+            if (selected != null)
+            {
+                if (MessageBoxResult.Yes == MessageBox.Show("Вы точно хотите изменить выбранную запись?", "Предупреждение!", MessageBoxButton.YesNo))
+                {
+                    try
+                    {
+                        PageHelper.MainFrame.Navigate(new changeProductPage(selected));
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Не удалось изменить запись!", "Ошибка!");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Для изменения необходимо выбрать запись!", "Ошибка!");
+            }
+        }
+
+        private void btnOrdersList_Click(object sender, RoutedEventArgs e)
+        {
+            PageHelper.MainFrame.Navigate(new ordersPage());
+        }
     }
 }
