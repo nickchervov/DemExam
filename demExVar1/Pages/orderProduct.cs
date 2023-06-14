@@ -14,7 +14,9 @@ namespace demExVar1.Pages
         private int price;
         private double discount;
         private string photo;
-        private string product;
+        private string productName;
+        private string productDescription;
+        private string productManufacturer;
         private int count;
 
         public int Id
@@ -46,14 +48,29 @@ namespace demExVar1.Pages
                 photo = value;
             }
         }
-        public string Product
+        public string ProductName
         {
-            get { return product; }
+            get { return productName; }
             set
             {
-                product = value;
+                productName = value;
             }
         }
+
+        public string ProductDescription
+        {
+            get { return productDescription; }
+
+            set { productDescription = value; }
+        }
+
+        public string ProductManufacturer
+        {
+            get { return productManufacturer; }
+
+            set { productManufacturer = value; }
+        }
+
         public int Count
         {
             get { return count; }

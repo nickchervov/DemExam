@@ -23,7 +23,22 @@
                                 <Image Source="{Binding Photo}" Height="110" Width="110"/>
                             </StackPanel>
                             <StackPanel VerticalAlignment="Center" MinWidth="500" Margin="100,0,10,0">
-                                <TextBlock Text="{Binding Product}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Наименование товара: "/>
+                                    <TextBlock Text="{Binding ProductName}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Описание товара: "/>
+                                    <TextBlock Text="{Binding ProductDescription}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Производитель: "/>
+                                    <TextBlock Text="{Binding ProductManufacturer}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Цена: "/>
+                                    <TextBlock Text="{Binding Price}"/>
+                                </StackPanel>
                             </StackPanel>
                             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                                 <TextBlock Text="{Binding Count}" HorizontalAlignment="Center"/>
