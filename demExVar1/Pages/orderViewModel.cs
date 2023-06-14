@@ -29,7 +29,8 @@ namespace demExVar1.Pages
             for (int i = 0; i < table.Count; i++)
             {   
                 
-                ordPrd.Add(new orderProduct() { Id = table[i].ProductID, Price= table[i].ProductCost,
+                ordPrd.Add(new orderProduct() { Id = table[i].ProductID,
+                                                Price= table[i].ProductCost,
                                                 Discount= (double)table[i].ProductDiscount,
                                                 Photo = table[i].ProductPhoto,
                                                 ProductName = table[i].ProductName,

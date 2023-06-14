@@ -36,8 +36,6 @@ namespace demExVar1.Pages
             {
                 var result = PageHelper.connectDb.User.Select(c => new { c.UserID , c.UserLogin }).Where(x => x.UserLogin == tbLogin.Text).ToDictionary( t => t.UserID, t => t.UserLogin);
 
-                //MessageBox.Show(Convert.ToString(result.Keys.Last())); Для проверки правильное ли значение получила переменная
-
                 PageHelper.UserId = result.Keys.Last();
 
                 PageHelper.roleId = 1;  //менеджер
@@ -48,8 +46,6 @@ namespace demExVar1.Pages
             {
                 var result = PageHelper.connectDb.User.Select(c => new { c.UserID, c.UserLogin }).Where(x => x.UserLogin == tbLogin.Text).ToDictionary(t => t.UserID, t => t.UserLogin);
 
-                //MessageBox.Show(Convert.ToString(result.Keys.Last())); Для проверки правильное ли значение получила переменная
-
                 PageHelper.UserId = result.Keys.Last();
 
                 PageHelper.roleId = 2;  //администратор
@@ -59,8 +55,6 @@ namespace demExVar1.Pages
             else if (PageHelper.connectDb.User.Where(x => x.UserLogin == tbLogin.Text && x.UserPassword == pbPassword.Password && x.UserRole == 4).FirstOrDefault() != null)
             {
                 var result = PageHelper.connectDb.User.Select(c => new { c.UserID, c.UserLogin }).Where(x => x.UserLogin == tbLogin.Text).ToDictionary(t => t.UserID, t => t.UserLogin);
-
-                //MessageBox.Show(Convert.ToString(result.Keys.Last())); Для проверки правильное ли значение получила переменная
 
                 PageHelper.UserId = result.Keys.Last();
 
