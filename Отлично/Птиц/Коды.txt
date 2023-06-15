@@ -1,0 +1,11 @@
+git init
+
+git checkout -b main
+
+git add *
+
+git commit -m "first commit"
+
+git remote add origin http://deuser**:deuser**@10.112.48.9:3000/deuser**/Session1.git
+
+git push -u origin main

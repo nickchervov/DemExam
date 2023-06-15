@@ -1,0 +1,33 @@
+﻿<Window x:Class="Session1.Pages.ConfirmWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Session1.Pages"
+        mc:Ignorable="d"
+        Title="ConfirmWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Content="Поздравляем, заказ зарегистрирован" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Номер вашего заказа: " FontSize="22"/>
+                <Label x:Name="lBasketId" HorizontalAlignment="Center" VerticalAlignment="Center" Content="" FontSize="22"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Дата регистрации заказа: " FontSize="22"/>
+                <Label x:Name="lDateNow" HorizontalAlignment="Center" VerticalAlignment="Center" Content="" FontSize="22"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Дата доставки заказа: " FontSize="22"/>
+                <Label x:Name="lDateFuture" HorizontalAlignment="Center" VerticalAlignment="Center" Content="" FontSize="22"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Уникальный код получения: " FontSize="22"/>
+                <Label x:Name="lIndividualToken" HorizontalAlignment="Center" VerticalAlignment="Center" Content="" FontSize="22"/>
+            </StackPanel>
+            <Button Background="#FF4DA6FF" Content="Закрыть окно и сделать новый заказ" FontSize="20" Width="350" Margin="0,10,0,0" Click="ButtonWindowsShutdown_Click"/>
+            <Button Background="#FF4DA6FF" Content="Закончить работу с приложением" FontSize="20" Margin="0,10,0,0" Width="350" Click="ButtonAppShutdown_Click_"/>
+   
+        </StackPanel>
+    </Grid>
+</Window>

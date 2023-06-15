@@ -1,0 +1,102 @@
+﻿<Window x:Class="Session1.Pages.CartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Session1.Pages"
+        mc:Ignorable="d"
+        Title="Корзина" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition />
+            <RowDefinition Height="0.15*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Label FontSize="16" Content="Номер заказа"></Label>
+            <Label x:Name="lCartNumber" FontSize="16" Content=""></Label>
+        </StackPanel>
+        <ListView  Name="BusketView" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="15"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="239*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"  HorizontalAlignment="Left" Height="194" VerticalAlignment="Top" Width="239" Grid.RowSpan="4" Grid.Row="0">
+                            <Image.Source>
+                                <Binding Path="Product.Image">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>pack://application:,,,/Images/none.jpg</ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                        <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="5">
+                            <StackPanel Orientation="Horizontal">
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Цена указанная в магазине: " FontSize="26"></TextBlock>
+                                <TextBlock Text="{Binding Path=Product.Price}" FontSize="26"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Скидка: " FontSize="26"></TextBlock>
+                                <TextBlock Text="{Binding Path=Product.Discount}" FontSize="26"></TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Кол-во в заказе: " FontSize="20"></TextBlock>
+                                <TextBlock  Text="{Binding Count}"  FontSize="20"></TextBlock>
+                                <TextBlock Text=" " FontSize="20"></TextBlock>
+                                <TextBlock  Text="ед."  FontSize="20"></TextBlock>
+                            </StackPanel>
+                            <StackPanel >
+
+                            </StackPanel>
+                        </StackPanel>
+
+                    </Grid>
+
+                </DataTemplate>
+
+
+            </ListView.ItemTemplate>
+            <ListView.Resources>
+                <Style TargetType="Grid">
+                    <Setter Property="Background" Value="White" />
+                </Style>
+            </ListView.Resources>
+        </ListView>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Label FontSize="16" Content="ИТОГОВАЯ ЦЕНА (c учетом скидок)" FontWeight="Bold"></Label>
+            <Label  x:Name="lResult" FontSize="16"  Content=""></Label>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Добавить 1 ед. товара" Height="30"  Background="#FF4DA6FF" Click="AddButton_Click" Margin="0,0,5,0"/>
+            <Button Content="Отнять 1 ед. товара" Height="30" Background="#FF4DA6FF" Click="ReduceButton_Click" Margin="0,0,5,0"/>
+            <Button Width="140" Content="Оформить заказ" Background="#FF4DA6FF" Height="30" FontSize="18" Click="OrderButton_Click" Margin="0,0,5,0"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
+            <TextBlock Grid.Row="9" Grid.Column="0" Text="Пункт выдачи:" FontSize="20" VerticalAlignment="Center"/>
+            <ComboBox x:Name="cmbdDeliveryPoint" 
+                          Grid.Row="9" 
+                        DisplayMemberPath="Name"
+                      
+                           SelectedIndex="0"
+                          Grid.Column="1" Width="150" Height="30">
+
+            </ComboBox>
+        </StackPanel>
+
+    </Grid>
+</Window>

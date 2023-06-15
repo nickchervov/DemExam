@@ -1,0 +1,37 @@
+﻿<Page x:Class="Session1.Pages.UsersList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Session1.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UsersList">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dgUserlist" AutoGenerateColumns="False"  Grid.Row="0" Grid.Column="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
+                <DataGridTextColumn Header="Почта" Binding="{Binding Email}"/>
+                <DataGridComboBoxColumn x:Name="cmbPosition" Header="Должность" SelectedItemBinding="{Binding Path=Roles}" DisplayMemberPath="Name"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Button Content="Выйти"   FontFamily="Segoe UI Historic"   Background="#FF0DB108"  HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center"  FontSize="18" Padding="20,8" Click="btnRecord_Click" Margin="10,0,0,0" Height="42" Width="93"/>
+
+        <Button Grid.Row="1" FontFamily="Segoe UI Historic"   Background="#FF0DB108" FontSize="18" Content="Сохранить" x:Name="btnWatchClRecords" Margin="0,0,10,0" VerticalAlignment="Center" Padding="20,8"    Click="btnWatchClRecords_Click"  HorizontalAlignment="Right" Height="42" Width="129"/>
+
+    </Grid>
+</Page>
